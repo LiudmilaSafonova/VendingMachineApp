@@ -8,11 +8,11 @@ namespace VendingMachineApp.VendingMachineApp.VM
 {
     public class Product
     {
-        private string Name { get; set; }
-        private decimal Price { get; set; }
-        private int Amount { get; set; }
-        private string ProductCode { get; set; }
-        public Product(string name, decimal price, int amount, string code)
+        public string Name { get; private set; }
+        public decimal Price { get; private set; }
+        public int Amount { get; private set; }
+        public string ProductCode { get; private set; }
+        public Product(string code, string name, decimal price, int amount)
         {
             Name = name;
             Price = price;
@@ -20,10 +20,6 @@ namespace VendingMachineApp.VendingMachineApp.VM
             ProductCode = code;
         }
 
-        public string GetName() => Name;
-        public decimal GetPrice() => Price;
-        public int GetAmount() => Amount;
-        public string GetProductCode() => ProductCode;
         public bool Dispense()
         {
             if (Amount > 0)
