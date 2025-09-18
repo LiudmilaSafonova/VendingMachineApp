@@ -95,6 +95,23 @@ namespace VendingMachineApp.VendingMachineApp.VM
             else
             {
                 Console.WriteLine("Product not found.");
+                return;
+            }
+        }
+
+        public void AddAmountProduct(string productCode)
+        {
+            var product = allProducts.FirstOrDefault(p => p.ProductCode == productCode);
+            if (product != null)
+            {
+                Console.WriteLine("Enter quantity of added products: ");
+                int amount = int.Parse(Console.ReadLine());
+                product.AddProduct(amount);
+                Console.WriteLine($"Amount of {product.Name} is {product.Amount}");
+            }
+            else
+            {
+                Console.WriteLine($"Product with {productCode} code not found.");
             }
         }
         public void AddCoins(decimal value)
