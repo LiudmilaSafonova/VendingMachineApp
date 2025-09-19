@@ -11,17 +11,17 @@ class Program
             if (vm.GetMode() == Mode.User)
             {
                 Console.WriteLine("\n1 - Show products");
-                Console.WriteLine("2 - Insert coins[add paper moneyy]");
+                Console.WriteLine("2 - Insert coins");
                 Console.WriteLine("3 - Buy product [wait for answer]");
-                Console.WriteLine("4 - Take money back [not ready]");
+                Console.WriteLine("4 - Take money back");
                 Console.WriteLine("5 - Enter admin mode");
                 Console.WriteLine("q - Quit");
 
             }
             else
             {
-                Console.WriteLine("101 - add quantity of product");
-                Console.WriteLine("102 - add new product [not ready, check for unique code]");
+                Console.WriteLine("\n101 - add quantity of product");
+                Console.WriteLine("102 - add new product [not ready, check for unique code, chack for input type]");
                 Console.WriteLine("103 - take money [not ready]");
                 Console.WriteLine("l - log out");
                 Console.WriteLine("q - Quit");
@@ -46,7 +46,7 @@ class Program
                     vm.Buy(code);
                     break;
                 case "4":
-                    Console.Write("your monet bak");
+                    vm.ReturnMoney2User();
                     break;
                 case "5":
                     Console.Write("Enter admin code: ");
@@ -56,22 +56,10 @@ class Program
                 case "q":
                     return;
                 case "101":
-                    Console.Write("Enter produt code: ");
-                    string prod_code = Console.ReadLine();
-                    vm.FindProduct(prod_code);
-                    vm.AddAmountProduct(prod_code);
+                    vm.AddAmountProduct();
                     break;
                 case "102":
-                    Console.Write("Add new product");
-                    Console.Write("Code: ");
-                    string p_code = Console.ReadLine();     //TODO: check if the code isn't used
-                    Console.Write("Name: ");
-                    string p_name = Console.ReadLine();
-                    Console.Write("Cost: ");
-                    decimal p_cost = decimal.Parse(Console.ReadLine());
-                    Console.Write("Amount: ");
-                    int p_amount = int.Parse(Console.ReadLine());
-                    vm.AddProduct(p_code, p_name, p_cost, p_amount);
+                    vm.AddProduct();
                     break;
                 case "l":
                     vm.SwitchMode2User();
